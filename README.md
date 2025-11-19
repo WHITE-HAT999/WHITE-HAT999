@@ -1,16 +1,17 @@
 -- Deobfuscated with MoonSec V3 Deobfuscator Tool
--- Original script had 1 lines and 138760 characters
+-- Original script had 1 lines and 41477 characters
 
 local UserInputService = game:GetService("UserInputService")
-local HttpService = game:GetService("HttpService")
+local Lighting = game:GetService("Lighting")
 local TweenService = game:GetService("TweenService")
+local Workspace = game:GetService("Workspace")
 
 -- Main configuration
 local CONFIG = {
-    speed = 25,
-    jumpPower = 127,
-    maxHealth = 90,
-    respawnTime = 3,
+    speed = 39,
+    jumpPower = 52,
+    maxHealth = 217,
+    respawnTime = 9,
     debugMode = false
 }
 
