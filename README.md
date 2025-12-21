@@ -90,10 +90,22 @@ local function createGUI()
     versionText.TextTransparency = 1
     versionText.Parent = logoFrame
     
+    local discordText = Instance.new("TextLabel")
+    discordText.Size = UDim2.new(1, 0, 0, 20)
+    discordText.Position = UDim2.new(0, 0, 0, 155)
+    discordText.BackgroundTransparency = 1
+    discordText.Text = "💎 discord.gg/5BarY3rrsr"
+    discordText.TextColor3 = Color3.fromRGB(88, 101, 242)
+    discordText.TextScaled = false
+    discordText.TextSize = 16
+    discordText.Font = Enum.Font.GothamBold
+    discordText.TextTransparency = 1
+    discordText.Parent = logoFrame
+    
     -- Loading bar
     local loadingBarBg = Instance.new("Frame")
     loadingBarBg.Size = UDim2.new(0, 300, 0, 6)
-    loadingBarBg.Position = UDim2.new(0.5, -150, 0, 160)
+    loadingBarBg.Position = UDim2.new(0.5, -150, 0, 185)
     loadingBarBg.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
     loadingBarBg.BorderSizePixel = 0
     loadingBarBg.Parent = logoFrame
@@ -146,6 +158,14 @@ local function createGUI()
         {TextTransparency = 0}
     ):Play()
     
+    wait(0.2)
+    
+    TweenService:Create(
+        discordText,
+        TweenInfo.new(0.6, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+        {TextTransparency = 0}
+    ):Play()
+    
     -- Animate loading bar
     TweenService:Create(
         loadingBar,
@@ -176,6 +196,12 @@ local function createGUI()
     
     TweenService:Create(
         versionText,
+        TweenInfo.new(0.5, Enum.EasingStyle.Quad),
+        {TextTransparency = 1}
+    ):Play()
+    
+    TweenService:Create(
+        discordText,
         TweenInfo.new(0.5, Enum.EasingStyle.Quad),
         {TextTransparency = 1}
     ):Play()
@@ -759,6 +785,41 @@ local function createGUI()
         end
     )
     
+    -- Discord Invite Button
+    createButton(
+        "DiscordInvite",
+        "Join Discord for More Scripts",
+        "💬",
+        {
+            ColorSequenceKeypoint.new(0, Color3.fromRGB(88, 101, 242)),
+            ColorSequenceKeypoint.new(1, Color3.fromRGB(71, 82, 196))
+        },
+        function()
+            if setclipboard then
+                setclipboard("https://discord.gg/5BarY3rrsr")
+                StarterGui:SetCore("SendNotification", {
+                    Title = "🎉 Discord Invite",
+                    Text = "Invite copied! Join for exclusive scripts!",
+                    Duration = 5
+                })
+                
+                -- Show additional prompt
+                wait(1)
+                StarterGui:SetCore("SendNotification", {
+                    Title = "💎 Premium Scripts",
+                    Text = "Paste in browser to join Ariel1w1s1's server!",
+                    Duration = 4
+                })
+            else
+                StarterGui:SetCore("SendNotification", {
+                    Title = "Discord",
+                    Text = "Join: discord.gg/5BarY3rrsr",
+                    Duration = 5
+                })
+            end
+        end
+    )
+    
     -- Auto rejoin toggle with modern switch design
     local autoRejoinFrame = Instance.new("Frame")
     autoRejoinFrame.Size = UDim2.new(1, 0, 0, 60)
@@ -1270,6 +1331,101 @@ local function createGUI()
         end,
         flingContent
     )
+    
+    -- Discord Community Card
+    local discordCard = Instance.new("Frame")
+    discordCard.Name = "DiscordCard"
+    discordCard.Size = UDim2.new(1, 0, 0, 100)
+    discordCard.BackgroundColor3 = Color3.fromRGB(88, 101, 242)
+    discordCard.BackgroundTransparency = 0.8
+    discordCard.Parent = flingContent
+    
+    local discordCardCorner = Instance.new("UICorner")
+    discordCardCorner.CornerRadius = UDim.new(0, 12)
+    discordCardCorner.Parent = discordCard
+    
+    local discordCardStroke = Instance.new("UIStroke")
+    discordCardStroke.Color = Color3.fromRGB(88, 101, 242)
+    discordCardStroke.Transparency = 0.5
+    discordCardStroke.Thickness = 2
+    discordCardStroke.Parent = discordCard
+    
+    local discordIcon = Instance.new("TextLabel")
+    discordIcon.Size = UDim2.new(0, 40, 0, 40)
+    discordIcon.Position = UDim2.new(0, 15, 0.5, -20)
+    discordIcon.BackgroundTransparency = 1
+    discordIcon.Text = "💎"
+    discordIcon.TextScaled = true
+    discordIcon.Parent = discordCard
+    
+    local discordTitle = Instance.new("TextLabel")
+    discordTitle.Size = UDim2.new(1, -70, 0, 25)
+    discordTitle.Position = UDim2.new(0, 65, 0, 15)
+    discordTitle.BackgroundTransparency = 1
+    discordTitle.Text = "Join Our Discord Community!"
+    discordTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
+    discordTitle.TextScaled = false
+    discordTitle.TextSize = 18
+    discordTitle.Font = Enum.Font.GothamBold
+    discordTitle.TextXAlignment = Enum.TextXAlignment.Left
+    discordTitle.Parent = discordCard
+    
+    local discordDesc = Instance.new("TextLabel")
+    discordDesc.Size = UDim2.new(1, -70, 0, 40)
+    discordDesc.Position = UDim2.new(0, 65, 0, 40)
+    discordDesc.BackgroundTransparency = 1
+    discordDesc.Text = "Get exclusive scripts, updates & support!\ndiscord.gg/5BarY3rrsr"
+    discordDesc.TextColor3 = Color3.fromRGB(220, 220, 220)
+    discordDesc.TextScaled = false
+    discordDesc.TextSize = 14
+    discordDesc.Font = Enum.Font.Gotham
+    discordDesc.TextXAlignment = Enum.TextXAlignment.Left
+    discordDesc.TextWrapped = true
+    discordDesc.Parent = discordCard
+    
+    local discordButton = Instance.new("TextButton")
+    discordButton.Size = UDim2.new(1, 0, 1, 0)
+    discordButton.BackgroundTransparency = 1
+    discordButton.Text = ""
+    discordButton.Parent = discordCard
+    
+    discordButton.MouseButton1Click:Connect(function()
+        if setclipboard then
+            setclipboard("https://discord.gg/5BarY3rrsr")
+            StarterGui:SetCore("SendNotification", {
+                Title = "🎊 Discord Invite Copied!",
+                Text = "Join for FREE premium scripts!",
+                Duration = 5
+            })
+        end
+    end)
+    
+    -- Hover effect for Discord card
+    discordButton.MouseEnter:Connect(function()
+        TweenService:Create(
+            discordCard,
+            TweenInfo.new(0.2, Enum.EasingStyle.Quad),
+            {BackgroundTransparency = 0.6}
+        ):Play()
+        TweenService:Create(
+            discordCardStroke,
+            TweenInfo.new(0.2, Enum.EasingStyle.Quad),
+            {Transparency = 0.2}
+        ):Play()
+    end)
+    
+    discordButton.MouseLeave:Connect(function()
+        TweenService:Create(
+            discordCard,
+            TweenInfo.new(0.2, Enum.EasingStyle.Quad),
+            {BackgroundTransparency = 0.8}
+        ):Play()
+        TweenService:Create(
+            discordCardStroke,
+            TweenInfo.new(0.2, Enum.EasingStyle.Quad),
+            {Transparency = 0.5}
+        ):Play()
+    end)
     
     -- Close button functionality with animation
     closeButton.MouseButton1Click:Connect(function()
